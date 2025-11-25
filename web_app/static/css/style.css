@@ -1,0 +1,110 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6fb;
+  margin: 0;
+  padding: 0;
+  color: #1f2532;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 20px 40px rgba(31, 37, 50, 0.08);
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  padding: 0.65rem;
+  border-radius: 8px;
+  border: 1px solid #d5d9e4;
+}
+
+button {
+  background: #4f46e5;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background: #4338ca;
+}
+
+.alert {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.alert-warning {
+  background: #fff8e5;
+  color: #6c4a00;
+}
+
+.alert-error {
+  background: #fdecea;
+  color: #b91c1c;
+}
+
+.recommendations {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recommendations li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eef0f7;
+}
+
+.recommendations li:last-child {
+  border-bottom: 0;
+}
+
+.score {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.author,
+.isbn {
+  margin: 0;
+  color: #6b7280;
+}
+
+.placeholder {
+  color: #6b7280;
+}

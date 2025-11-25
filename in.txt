@@ -1,0 +1,22 @@
+# === FULL INSTALLATION SCRIPT ===
+
+# 1. Update core packages
+python -m pip install --upgrade pip setuptools wheel
+
+# 2. Install Cython
+pip install cython
+
+# 3. Install numpy first (dependency)
+pip install numpy
+
+# 4. Install scikit-surprise
+pip install scikit-surprise
+
+# 5. Install other required packages
+pip install pandas matplotlib seaborn scipy scikit-learn
+
+# 6. Install web framework
+pip install flask
+
+# 7. Verify installation
+python -c "from surprise import SVD, Dataset, Reader; print('✅ All packages installed successfully!')"

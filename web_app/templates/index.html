@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Book Recommendation System</h1>
+        <p>Hybrid Collaborative Filtering + SVD demo</p>
+      </header>
+
+      <section class="panel">
+        <form method="post">
+          <label for="user_id">User ID</label>
+          <input type="number" id="user_id" name="user_id" value="{{ default_user }}" required />
+
+          <label for="algorithm">Algorithm</label>
+          <select id="algorithm" name="algorithm">
+            <option value="user_cf" {% if selected_algorithm == 'user_cf' %}selected{% endif %}>User-Based CF</option>
+            <option value="item_cf" {% if selected_algorithm == 'item_cf' %}selected{% endif %}>Item-Based CF</option>
+            <option value="svd" {% if selected_algorithm == 'svd' %}selected{% endif %}>SVD</option>
+            <option value="hybrid" {% if selected_algorithm == 'hybrid' %}selected{% endif %}>Hybrid</option>
+          </select>
+
+          <button type="submit">Generate Recommendations</button>
+        </form>
+
+        {% if not ready %}
+        <div class="alert alert-warning">
+          Place <code>Books.csv</code>, <code>Users.csv</code>, and <code>Ratings.csv</code> under <code>data/raw</code> and
+          refresh to activate the demo.
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="alert alert-error">{{ error }}</div>
+        {% endif %}
+      </section>
+
+      <section class="panel">
+        <h2>Recommendations</h2>
+        {% if recommendations %}
+        <ul class="recommendations">
+          {% for rec in recommendations %}
+          <li>
+            <div class="score">{{ rec.score | round(2) }}</div>
+            <div>
+              <p class="title">{{ rec.metadata.title if rec.metadata else rec.isbn }}</p>
+              <p class="author">{{ rec.metadata.author if rec.metadata else '' }}</p>
+              <p class="isbn">ISBN: {{ rec.isbn }}</p>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="placeholder">Submit the form to see personalized book suggestions.</p>
+        {% endif %}
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
